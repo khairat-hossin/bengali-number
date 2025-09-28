@@ -1,0 +1,46 @@
+{
+  "name": "khairat/bengali-number",
+  "description": "Convert numbers to Bengali words with support for integers, decimals, and currencies",
+  "type": "library",
+  "keywords": ["laravel", "bengali", "number", "converter", "bangla"],
+  "license": "MIT",
+  "authors": [
+      {
+          "name": "Khairat",
+          "email": "your-email@example.com"
+      }
+  ],
+  "require": {
+      "php": "^8.0",
+      "illuminate/support": "*"
+  },
+  "require-dev": {
+      "orchestra/testbench": "^8.36",
+      "phpunit/phpunit": "^9.6"
+  },
+  "autoload": {
+      "psr-4": {
+          "Khairat\\BengaliNumber\\": "src/"
+      }
+  },
+  "autoload-dev": {
+      "psr-4": {
+          "Khairat\\BengaliNumber\\Tests\\": "tests/"
+      }
+  },
+  "extra": {
+      "laravel": {
+          "providers": [
+              "Khairat\\BengaliNumber\\Providers\\BengaliNumberServiceProvider"
+          ],
+          "aliases": {
+              "BengaliNumber": "Khairat\\BengaliNumber\\Facades\\BengaliNumber"
+          }
+      }
+  },
+  "scripts": {
+      "test": "vendor/bin/phpunit"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
