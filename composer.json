@@ -12,10 +12,10 @@
   ],
   "require": {
       "php": "^8.0",
-      "illuminate/support": "*"
+      "illuminate/support": "^9.0|^10.0"
   },
   "require-dev": {
-      "orchestra/testbench": "^8.36",
+      "orchestra/testbench": "^7.0|^8.0",
       "phpunit/phpunit": "^9.6"
   },
   "autoload": {
