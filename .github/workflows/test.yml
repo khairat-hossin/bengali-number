@@ -18,7 +18,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
@@ -27,10 +27,18 @@ jobs:
         extensions: mbstring, xml
         coverage: none
 
+    - name: Cache Composer dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.composer/cache
+        key: composer-${{ matrix.php }}-${{ matrix.laravel }}-${{ hashFiles('composer.lock') }}
+        restore-keys: |
+          composer-${{ matrix.php }}-${{ matrix.laravel }}-
+
     - name: Install dependencies
       run: |
         composer require "illuminate/support:${{ matrix.laravel }}" --no-interaction --no-update
-        composer update --prefer-dist --no-interaction
+        composer install --prefer-dist --no-interaction
 
     - name: Execute tests
-      run: ./vendor/bin/phpunit
+      run: ./vendor/bin/phpunit --verbose
